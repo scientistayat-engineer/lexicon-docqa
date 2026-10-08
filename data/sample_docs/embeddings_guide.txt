@@ -1,0 +1,5 @@
+Embeddings turn text into lists of numbers called vectors. Texts with similar meaning end up close together in vector space, even when they share no words. For example, "repairing an automobile" and "fixing a car" have nearby embeddings.
+
+Sentence-transformer models such as all-MiniLM-L6-v2 produce 384-dimensional vectors and run fast on a CPU. Closeness is measured with cosine similarity, where 1 means identical direction and 0 means unrelated. Cosine distance is simply 1 minus cosine similarity.
+
+Chunk overlap keeps a sentence that crosses a chunk boundary from losing its context, so retrieval does not miss it.

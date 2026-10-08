@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lexicon - Document Q&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Literata:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="theme-color" content="#14213D">
+</head>
+<body>
+<div class="app">
+<aside>
+<div class="brand"><img src="favicon.svg" alt="" width="34" height="34"><h1>Lexicon</h1></div>  <input type="file" id="file" multiple accept=".pdf,.txt,.md" hidden>
+  <button class="drop" id="up" type="button">Upload PDF, TXT or Markdown</button>
+  <div id="upmsg" class="sub" style="margin-top:8px"></div>
+  <div class="lbl" style="margin-top:14px" id="dcount">Library</div>
+  <div id="docs"></div>
+  <div class="set">Embedding model: <b>all-MiniLM-L6-v2</b><br>Vector store: <b>ChromaDB (cosine)</b><br>LLM: <b>Groq</b><br>Chunk size: <b>500 chars, 50 overlap</b><br>Top-k: <b>3</b></div>
+</aside>
+<main>
+<div class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-t="ask">Ask</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="cmp">Compare prompts</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="sem">Semantic vs keyword</button>
+</div>
+
+<section id="ask">
+  <div class="ask"><input class="q" id="q" placeholder="Ask a question about your documents" value="What is a vector database and why is it used in RAG?" aria-label="Your question"><button class="btn" id="go" type="button">Ask</button></div>
+  <div class="seg" id="mode"><button aria-pressed="false" data-m="zero_shot">Zero-shot</button><button aria-pressed="false" data-m="few_shot">Few-shot</button><button aria-pressed="true" data-m="role_based">Role-based</button></div>
+  <div class="card"><p class="lbl">Answer</p><div id="ans" class="mute">Your answer will appear here.</div></div>
+  <div class="card"><p class="lbl">Top 3 retrieved chunks</p><div id="chunks" class="mute">Retrieved chunks and their similarity scores will appear here.</div></div>
+</section>
+
+<section id="cmp" hidden>
+  <p class="lbl">Five test questions (one per line), run through all three templates and scored by an LLM judge</p>
+  <textarea id="bq" class="q" rows="5" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit"></textarea>
+  <div style="margin:10px 0 16px"><button class="btn" id="run" type="button" style="padding:10px 20px">Run comparison</button> <span id="bmsg" class="mute"></span></div>
+  <div id="bout"></div>
+</section>
+
+<section id="sem" hidden>
+  <div class="ask"><input class="q" id="sq" value="how do I fix my car?" aria-label="Search query"><button class="btn" id="sgo" type="button">Search</button></div>
+  <div class="two">
+    <div class="card"><p class="lbl">Keyword search (exact words)</p><div id="kw" class="mute">Run a search to compare.</div></div>
+    <div class="card"><p class="lbl">Semantic search (meaning, with distance)</p><div id="sm" class="mute">Run a search to compare.</div></div>
+  </div>
+  <div class="card"><p class="lbl">How they differ</p>Keyword search only finds chunks that contain the same words as the query. Semantic search converts the query and every chunk into embeddings and ranks chunks by how close their meaning is, so it can match "fix my car" with "repairing an automobile" even with zero shared words.</div>
+</section>
+</main>
+</div>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
