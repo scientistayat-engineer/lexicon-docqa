@@ -8,10 +8,10 @@
 
 Upload PDF, TXT or Markdown files, ask questions in plain language, and get answers grounded in your documents, with the exact source chunks shown beside every answer.
 
-<a href="https://your-project.vercel.app"><img src="https://img.shields.io/badge/Live_Demo-22C55E?style=for-the-badge&logo=vercel&logoColor=white" alt="Live_Demo"></a>
+<a href="https://lexicon-docqa.web.app"><img src="https://img.shields.io/badge/Live_Demo-22C55E?style=for-the-badge&logo=vercel&logoColor=white" alt="Live_Demo"></a>
 <a href="docs/report/Lexicon_Report.pdf"><img src="https://img.shields.io/badge/Technical_Report-E11D48?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="Technical_Report"></a>
 <a href="docs/presentation/Lexicon_Presentation.pptx"><img src="https://img.shields.io/badge/Presentation-F97316?style=for-the-badge&logo=microsoftpowerpoint&logoColor=white" alt="Presentation"></a>
-<a href="https://your-project.vercel.app/docs"><img src="https://img.shields.io/badge/API_Docs-2F4BDB?style=for-the-badge&logo=fastapi&logoColor=white" alt="API_Docs"></a>
+<a href="https://lexicon-docqa.vercel.app/docs"><img src="https://img.shields.io/badge/API_Docs-2F4BDB?style=for-the-badge&logo=fastapi&logoColor=white" alt="API_Docs"></a>
 
 <img src="https://github.com/scientistayat-engineer/lexicon-docqa/actions/workflows/ci.yml/badge.svg" alt="CI">
 <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
@@ -217,7 +217,7 @@ Interactive documentation is available at `/docs` while the server is running.
 
 Firebase Hosting cannot run Python, so the backend stays on Vercel.
 
-1. Set `window.API_BASE = "https://<your-project>.vercel.app"` in `public/js/config.js`.
+1. Set `window.API_BASE = "https://lexicon-docqa.vercel.app"` in `public/js/config.js`.
 2. Run:
 
 ```bash
