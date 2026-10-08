@@ -3,6 +3,7 @@ import re
 from functools import lru_cache
 
 from app.config import SERVERLESS, settings
+from app.services import sqlite_fix  # noqa: F401
 from app.services import embeddings
 from app.services.chunking import chunk_text
 from app.services.loaders import read_file

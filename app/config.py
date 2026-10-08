@@ -3,13 +3,17 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
+os.environ.setdefault("ANONYMIZED_TELEMETRY", "False")
+if os.getenv("VERCEL"):
+    os.environ.setdefault("HF_HOME", "/tmp/hf")
+    os.environ.setdefault("XDG_CACHE_HOME", "/tmp")
 ROOT = Path(__file__).resolve().parent.parent
 SERVERLESS = bool(os.getenv("VERCEL"))
 
 
 class Settings:
     groq_api_key = os.getenv("GROQ_API_KEY", "")
-    groq_model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+    groq_model = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
     embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
     chunk_size, chunk_overlap, top_k = 500, 50, 3
     sample_docs = ROOT / "data" / "sample_docs"

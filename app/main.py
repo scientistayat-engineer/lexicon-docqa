@@ -21,6 +21,9 @@ api = APIRouter(prefix="/api")
 async def llm_error(_, exc: llm.LLMError):
     return JSONResponse(status_code=502, content={"detail": str(exc)})
 
+@app.exception_handler(Exception)
+async def unexpected_error(_, exc: Exception):
+    return JSONResponse(status_code=500, content={"detail": f"{type(exc).__name__}: {exc}"})
 
 @api.get("/health")
 def health():
